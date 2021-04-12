@@ -1,0 +1,69 @@
+.AnchorPaneGlobal{
+	
+}
+
+.AnchorPane{
+	-fx-background-color: White;
+}
+
+.logo{
+	-fx-background-color: White;
+	-fx-color: #5E5A5A;
+}
+
+.menuHaut{
+	-fx-background-color: #5E5A5A;
+}
+.menu_gauche{
+	-fx-background-color: #5E5A5A;
+}
+
+
+.AnchorPaneAjouterNvPlante{
+	-fx-background-color: White;
+}
+
+Button {
+	-fx-background-color: white;
+	-fx-border-color: #5E5A5A;
+}
+
+
+.btnAnnuler:hover{
+	-fx-border-color: Red;
+    -fx-inner-border-horizontal:blue;
+}
+
+.btnMenuHaut{
+	-fx-border-radius: 25px;
+}
+
+.btnMenuHaut:hover{
+	-fx-border-color: #25DD37;
+    
+}
+
+.btnMenuGauche{
+	-fx-text-till: #27593B;
+}
+
+.textBtnMenuHaut {
+    -fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: #27593B;
+    -fx-border-color: #27593b;
+    -fx-effect: dropshadow( one-pass-box , white , 0, 0.0 , 0 , 1 );
+}
+
+.textBtnMenuHaut:hover{
+    -fx-border-color: #25DD37;
+    -fx-inner-border-horizontal:blue
+}
+
+
+
+
+
+
+
+

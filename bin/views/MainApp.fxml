@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="900.0" stylesheets="@../application/application.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.MainAppController">
+   <children>
+      <AnchorPane prefHeight="750.0" prefWidth="200.0" styleClass="menu_gauche" stylesheets="@../application/application.css">
+         <children>
+            <Separator layoutY="65.0" prefHeight="6.0" prefWidth="200.0" />
+            <Pane prefHeight="68.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="59.0" layoutY="26.0" text="AppJardinage" />
+               </children>
+            </Pane>
+            <Button fx:id="btnFormEvent" layoutY="159.0" mnemonicParsing="false" onAction="#PageFormEvent" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvel évènement" />
+            <Button fx:id="btnFormPlante" layoutY="105.0" mnemonicParsing="false" onAction="#PageFormPlante" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle plante" />
+            <Button fx:id="btnFormZone" layoutY="213.0" mnemonicParsing="false" onAction="#PageFormZone" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle zone" />
+            <Button layoutY="266.0" mnemonicParsing="false" onAction="#FormMesure" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle mesure" />
+         </children>
+      </AnchorPane>
+      <Pane layoutX="200.0" prefHeight="68.0" prefWidth="700.0" styleClass="menuHaut" stylesheets="@../application/application.css">
+         <children>
+            <Button fx:id="btnPlanning" layoutX="54.0" layoutY="20.0" mnemonicParsing="false" onAction="#PagePlanning" stylesheets="@../application/application.css" text="Planning" textAlignment="CENTER">
+               <styleClass>
+                  <String fx:value="btnMenuHaut" />
+                  <String fx:value="textBtnMenuHaut" />
+               </styleClass></Button>
+            <Button fx:id="btnListeProjet" layoutX="450.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListeProjet" stylesheets="@../application/application.css" text="Liste des projets">
+               <styleClass>
+                  <String fx:value="textBtnMenuHaut" />
+                  <String fx:value="btnMenuHaut" />
+               </styleClass></Button>
+            <Button fx:id="btnListePlantes" layoutX="164.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListePlantes" stylesheets="@../application/application.css" text="Liste des plantes">
+               <styleClass>
+                  <String fx:value="textBtnMenuHaut" />
+                  <String fx:value="btnMenuHaut" />
+               </styleClass></Button>
+            <Button fx:id="btnMeteo" layoutX="601.0" layoutY="21.0" mnemonicParsing="false" onAction="#PageMeteo" stylesheets="@../application/application.css" text="Météo">
+               <styleClass>
+                  <String fx:value="textBtnMenuHaut" />
+                  <String fx:value="btnMenuHaut" />
+               </styleClass></Button>
+            <Button fx:id="btnListeSuivis" layoutX="313.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListeSuivis" stylesheets="@../application/application.css" text="Liste des suivis">
+               <styleClass>
+                  <String fx:value="textBtnMenuHaut" />
+                  <String fx:value="btnMenuHaut" />
+               </styleClass>
+            </Button>
+         </children>
+      </Pane>
+      <Separator layoutX="197.0" orientation="VERTICAL" prefHeight="68.0" prefWidth="3.0" />
+      <VBox fx:id="Vbox" layoutX="202.0" layoutY="68.0" prefHeight="681.0" prefWidth="700.0" />
+   </children>
+</AnchorPane>
