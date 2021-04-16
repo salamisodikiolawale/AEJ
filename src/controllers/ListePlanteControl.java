@@ -86,6 +86,7 @@ public class ListePlanteControl implements Initializable{
 	    		if(js.get(2)!=null) {
 	    			plante.setHauteurLargeurPoid(js.get(2).toString());
 	    		}
+	    		plante.setUrl(jsObj.get("Url").toString());
 	    		pl.add(plante);
     		}
     		

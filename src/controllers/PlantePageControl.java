@@ -3,6 +3,7 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
@@ -15,6 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -42,6 +44,7 @@ public class PlantePageControl implements Initializable{
     @FXML private Label labNote;
     @FXML private ImageView imgView;
     private String id;
+    private String[] tabImage;
   
 
 
@@ -77,6 +80,8 @@ public class PlantePageControl implements Initializable{
 		    	mesusureL.setText(listeUnite.get(1));
 		    	mesureP.setText(listeUnite.get(2));
 		    	mesureF.setText(listeUnite.get(3));
+		    	Image i = new Image(getClass().getResourceAsStream((String) jsnObject.get("Url")));
+		    	imgView.setImage(i);
 		    	//Image i = new Image("test.png");
 				//imgView.setImage(i);
 		    	//Plantes.setIdShow(null);//remet le idShow a null
@@ -88,7 +93,7 @@ public class PlantePageControl implements Initializable{
 			JSONArray jsA = ReadWriteFileJson.readerFileJson("Plantes");
 			return (JSONObject) jsA.get(jsA.size()-1);
 		}
-		
+
 
 	 @FXML void modifier() throws IOException, ParseException {
 	    	Plantes.setIdUpdate(this.id);	

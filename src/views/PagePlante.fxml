@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -19,17 +19,17 @@
             <Separator layoutX="36.0" layoutY="42.0" prefWidth="200.0" />
             <Separator layoutX="488.0" layoutY="42.0" prefWidth="200.0" />
             <Label layoutX="94.0" layoutY="219.0" text="Couleur : " />
-            <Button layoutX="259.0" layoutY="545.0" mnemonicParsing="false" onAction="#modifier" prefHeight="24.0" prefWidth="143.0" text="Modifier" />
-            <ImageView fx:id="imgView" fitHeight="80.0" fitWidth="143.0" layoutX="276.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../Téléchargements/a%20reclasser/Media/images/img6.jpg" />
-               </image>
+            <Button layoutX="279.0" layoutY="545.0" mnemonicParsing="false" onAction="#modifier" prefHeight="24.0" prefWidth="143.0" text="Modifier" />
+            <ImageView fx:id="imgView" fitHeight="90.0" layoutX="317.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="317.0" AnchorPane.topAnchor="59.0">
+               <viewport>
+                  <Rectangle2D width="200.0" />
+               </viewport>
             </ImageView>
             <Label layoutX="95.0" layoutY="253.0" text="Date de la plante :" />
             <Label layoutX="94.0" layoutY="312.0" text="Note :" />
-            <Separator layoutX="30.0" layoutY="381.0" prefWidth="200.0" />
-            <Separator layoutX="482.0" layoutY="381.0" prefWidth="200.0" />
-            <Text layoutX="294.0" layoutY="389.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caractéristiques" />
+            <Separator layoutX="30.0" layoutY="377.0" prefWidth="200.0" />
+            <Separator layoutX="482.0" layoutY="377.0" prefWidth="200.0" />
+            <Text layoutX="294.0" layoutY="385.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Caractéristiques" />
             <Label layoutX="96.0" layoutY="410.0" text="Hauteur :" />
             <Label layoutX="94.0" layoutY="434.0" text="Largeur :" />
             <Label layoutX="96.0" layoutY="465.0" text="Poids :" />

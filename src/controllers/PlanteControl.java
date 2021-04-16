@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
@@ -53,6 +54,7 @@ public class PlanteControl implements Initializable{
     @FXML private Label labUrlImage;
     @FXML private Label labNom;  
     @FXML private ImageView imgPlante;
+    private String[] tabImage;
     
 
 	
@@ -100,10 +102,21 @@ public class PlanteControl implements Initializable{
 			plantes.setHauteurLargeurPoid((String) cmbLargeur.getValue());
 			plantes.setHauteurLargeurPoid((String) cmbPoids.getValue());
 			plantes.setHauteurLargeurPoid((String) cmbLongeurFeuille.getValue());
-			plantes.setUrl(labUrlImage.getText());
+			//L'url a revoir
+			//plantes.setUrl(labUrlImage.getText());
+			tabImage = new String[6];
+			for(int i =0; i<tabImage.length; i++) {
+				tabImage[i] = "/images/img"+i+".jpg";
+			}
+			Random r =  new Random();
+			int nb = r.nextInt(6);
+			
+			
 			if(url!=null) {
-				plantes.setUrl(url.toString());
+				//plantes.setUrl(url.toString());
+				plantes.setUrl(tabImage[nb]);
 			}else {
+				plantes.setUrl(tabImage[nb]);
 				System.out.println("(PlanteControl) : EnregistreOperation url =>"+url);
 			}
 

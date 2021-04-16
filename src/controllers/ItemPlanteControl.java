@@ -12,10 +12,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import models.Plantes;
 
 public class ItemPlanteControl implements Initializable{
@@ -37,24 +41,24 @@ public class ItemPlanteControl implements Initializable{
 	 
 	 
 	 
-	 @FXML void detailPlante() throws IOException, ParseException{
+	 @SuppressWarnings("static-access")
+	@FXML void detailPlante() throws IOException, ParseException{
+		 try {
 		 Plantes pl = new Plantes();
-//		 FXMLLoader fxl = new FXMLLoader();
-//		 fxl.setLocation(getClass().getResource("/views/PagePlante.fxml"));
-//		 //VBox vbox = fxl.load();
-//		 PlantePageControl plantePageControl = new PlantePageControl();
-//		 plantePageControl = fxl.getController();
-//		 //plantePageControl.PagePlanteVbox.set = fxl.load();
-//		 plantePageControl.PagePlanteVbox.getChildren().removeAll();
-//		 plantePageControl.PagePlanteVbox.getChildren().setAll(fxml);
-//		 
-//		 String id = pl.getId(lblNom.getText());
-//		 //Mise à jour de idShow
-//		 Plantes.setIdShow(id);
-
-		 //this.infosImage.getChildren().removeAll();
-		 //this.infosImage.getChildren().setAll(fxml);
+		 String id = pl.getId(lblNom.getText());
+		 pl.setIdShow(id);
+		 Stage stage = new Stage();
+		 FXMLLoader fxl = new FXMLLoader();
+		 VBox root = fxl.load(getClass().getResource("/views/PagePlante.fxml").openStream());
+		 stage.setScene(new Scene(root, 700, 600));
+		 stage.showAndWait();
+		 } catch(IOException io) {
+			 io.printStackTrace();
+		 }
+		
+		 
 	 }
+	 
 	 
 	 public void setData(Plantes plante) {
 		 this.plante = plante;
@@ -62,13 +66,15 @@ public class ItemPlanteControl implements Initializable{
 		 lblNom.setText(this.plante.getNom());
 		 lblPoids.setText(this.plante.getPoids().toString()+" "+this.plante.getHauteurLargeurPoid());
 		 lblVariete.setText(this.plante.getVariete());
-		 Random random = new Random();
-		 int nb;
-		 nb = random.nextInt(6);
-		 shuffleUrlList();
-		 this.plante.setUrl("/images/"+this.urlList.get(nb)+".jpg");
 		 Image i = new Image(getClass().getResourceAsStream(plante.getUrl()));
 		 img.setImage(i);
+//		 Random random = new Random();
+//		 int nb;
+//		 nb = random.nextInt(6);
+//		 shuffleUrlList();
+//		 this.plante.setUrl("/images/"+this.urlList.get(nb)+".jpg");
+//		 Image i = new Image(getClass().getResourceAsStream(plante.getUrl()));
+//		 img.setImage(i);
 	 }
 
 	@Override
