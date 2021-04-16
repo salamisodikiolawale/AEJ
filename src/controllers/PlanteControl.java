@@ -17,8 +17,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -106,18 +104,18 @@ public class PlanteControl implements Initializable{
 			if(url!=null) {
 				plantes.setUrl(url.toString());
 			}else {
-				System.out.println("####"+url);
+				System.out.println("(PlanteControl) : EnregistreOperation url =>"+url);
 			}
 
 			
 			try {
-					System.out.println("Je passe");
+
 					JSONArray liste_plantes = ReadWriteFileJson.readerFileJson("Plantes");
 					liste_plantes.add(plantes.tranformPlanteToObjectJson());
 					ReadWriteFileJson.writeFileJson("Plantes", liste_plantes);
-					//plantes.addPlanteList(plantes);
-					showAlertWithHeaderText("Création de plante", "Votre plante a bien été enregistrer");
+					ReadWriteFileJson.showAlertWithHeaderText("Création de plante", "Votre plante a bien été enregistrer");
 					if(Plantes.isUpdate()) {
+
 						deletePlante(Plantes.getIdUpdate());
 					}
 					//Actualise le idShow
@@ -133,7 +131,7 @@ public class PlanteControl implements Initializable{
 			this.FormePlanteVbox.getChildren().setAll(fxml);
     		
 		}else {
-			showAlertWithHeaderText("Champs Obligatoire", "Nom, Couleur, Variete, Date");
+			ReadWriteFileJson.showAlertWithHeaderText("Champs Obligatoire", "Nom, Couleur, Variete, Date");
 		}
     }
 	
@@ -151,19 +149,21 @@ public class PlanteControl implements Initializable{
 		list.forEach(d -> {
 			
 			JSONObject d1 = (JSONObject)d;
-			if(d1.get("Id").toString().equals(id)) {
-				d1.remove("Id");
-				d1.remove("Unite");
-				d1.remove("Variete");
-				d1.remove("Couleur");
-				d1.remove("Mesures");
-				d1.remove("Note");
-				d1.remove("Nom");
-				d1.remove("Date");
-				d1.remove("Url");
-				return;
-				
-			}
+			
+			if(!d1.isEmpty())
+				if(d1.get("Id").toString().equals(id)) {
+					d1.remove("Id");
+					d1.remove("Unite");
+					d1.remove("Variete");
+					d1.remove("Couleur");
+					d1.remove("Mesures");
+					d1.remove("Note");
+					d1.remove("Nom");
+					d1.remove("Date");
+					d1.remove("Url");
+					return;
+					
+				}
 		});
 		ReadWriteFileJson.writeFileJson("Plantes", list);
 	}
@@ -188,35 +188,12 @@ public class PlanteControl implements Initializable{
 	}
 	
 
-	 private void showAlertWithHeaderText(String title, String msg) {
-	        Alert alert = new Alert(AlertType.INFORMATION);
-	        alert.setTitle(title);
-	        alert.setHeaderText("");
-	        alert.setContentText(msg);
-	        alert.showAndWait();
-	    }
-	
-	
-//	@SuppressWarnings("unchecked")
-//	public void remplirComboUniteHauteurLargeur() throws IOException, ParseException {
-//		List<String> unites = new ArrayList<String>();
-//		JSONArray jsonArray = ReadWriteFileJson.readerFileJson("Unites");
-//		JSONObject jsonObjt = (JSONObject) jsonArray.get(0);
-//		JSONArray ListeUnite = (JSONArray)jsonObjt.get("UniteHauteurLargeur");
-//		ListeUnite.forEach(unite -> {
-//			unites.add((String) unite);
-//		});
-//		cmbHauteur.setItems(FXCollections.observableArrayList(unites));
-//		cmbLargeur.setItems(FXCollections.observableArrayList(unites));
-//		cmbLongeurFeuille.setItems(FXCollections.observableArrayList(unites));
-//	}
+
 	
 		@SuppressWarnings("unchecked")
-		public void remplirComboUniteHauteurLargeur() throws IOException, ParseException {
+		public void remplirCombo() throws IOException, ParseException {
 			JSONArray jsonArray = ReadWriteFileJson.readerFileJson("Unites");
-			@SuppressWarnings("unused")
 			ObservableList<String> FxclUniteHauteurLargeur = FXCollections.observableArrayList();
-			@SuppressWarnings("unused")
 			ObservableList<String> FxclUniteP = FXCollections.observableArrayList();
 			jsonArray.forEach(obj -> {
 				JSONObject o = (JSONObject) obj;
@@ -249,7 +226,6 @@ public class PlanteControl implements Initializable{
 		fc.getExtensionFilters().add(new ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif","*.jpeg"));
 		File f = fc.showOpenDialog(null);
 		if(f != null ) {
-			System.out.println(f);
 			labUrlImage.setText(f.getAbsolutePath());
 			Image img = new Image(f.toURI().toString(), imgPlante.getFitWidth(), imgPlante.getFitHeight(), true, true);
 			imgPlante.setImage(img);
@@ -277,7 +253,7 @@ public class PlanteControl implements Initializable{
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
 		try {
-			remplirComboUniteHauteurLargeur();
+			remplirCombo();
 			remplirChamps();
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();

@@ -26,7 +26,7 @@ public class Plantes{
 	private String url;
 	private HashMap<String, Double> mesures =  new HashMap<String, Double>();
 	private List<String> HauteurLargeurPoid = new ArrayList<String>();
-	private static ArrayList<Plantes> planteList;
+	private JSONArray planteList = new JSONArray();
 	private JSONObject PlanteJson;
 	private static boolean isUpdate = false;
 	private static String idUpdate;
@@ -34,7 +34,6 @@ public class Plantes{
 	
 	
 	public Plantes() {
-		planteList = new ArrayList<Plantes>();
 	}
 	
 //	public Plantes(String id,String nom, String variete, String couleur, String date, 
@@ -58,9 +57,10 @@ public class Plantes{
 		JSONObject data;
 		for(int i=0; i<jsonArray.size(); i++) {
 			data = (JSONObject) jsonArray.get(i);
-			if(data.get("Id").toString().equals(id)) {
-				return data;
-			}
+			
+			if(!data.isEmpty())
+				if(data.get("Id").toString().equals(id))
+					return data;
 		};
 		return null;
 	}
@@ -83,18 +83,33 @@ public class Plantes{
 	public String getId() {
 		return id;
 	}
-
+	String i="";
+	@SuppressWarnings("unchecked")
+	public String getId(String nom) throws IOException, ParseException {
+		JSONArray js = ReadWriteFileJson.readerFileJson("Plantes");
+		
+		js.forEach(p -> {
+			JSONObject pl = (JSONObject) p;
+			if(!pl.isEmpty())
+				if(pl.get("Nom").toString().equals(nom)) {
+					i = pl.get("Id").toString();
+					return;
+				}
+		});
+		return i;
+	}
+	
 	public void setId(String id) {
 		this.id = id;
 	}
 	
 	public Plantes getLastData() {
-			System.out.println("lastData");
-			return Plantes.planteList.get(Plantes.planteList.size()-1);
+		return null;
+			//System.out.println("lastData");
+			//return planteList.get(Plantes.planteList.size()-1);
 	
 	}
 
-	
 	public String getNom() {
 		return nom;
 	}
@@ -131,27 +146,17 @@ public class Plantes{
 		return note;
 	}
 
-	public void setNote(String note) {
-		this.note = note;
-	}
+	public void setNote(String note) { this.note = note; }
 
-	public HashMap<String,Double> getMesures() {
-		return mesures;
-	}
+	public HashMap<String,Double> getMesures() { return mesures; }
 
-	public void setMesures(String KeyName, Double value) {
-		this.mesures.put(KeyName, value);
-	}
+	public void setMesures(String KeyName, Double value) { this.mesures.put(KeyName, value); }
 	
 
 
-	public List<String> getHauteurLargeurPoid() {
-		return HauteurLargeurPoid;
-	}
+	public List<String> getHauteurLargeurPoid() { return HauteurLargeurPoid; }
 
-	public void setHauteurLargeurPoid(String mesureName) {
-		this.HauteurLargeurPoid.add(mesureName);
-	}
+	public void setHauteurLargeurPoid(String mesureName) { this.HauteurLargeurPoid.add(mesureName); }
 
 	public Double getHauteur() {return hauteur;}
 	public void setHauteur(Double hauteur) {
@@ -167,6 +172,7 @@ public class Plantes{
 	}
 
 	public Double getPoids() {return poids;}
+	
 	public void setPoids(Double poids) {
 		this.poids = poids;
 		setMesures("Poids", poids);
@@ -178,21 +184,15 @@ public class Plantes{
 		setMesures("LongeurFeuille", LongeurFeuille);
 	}
 	
-	public String getUrl() {
-		return url;
+	public String getUrl() { return url; }
+
+	public void setUrl(String fInputS) { this.url = fInputS; }
+
+	public JSONArray getPlanteList() throws IOException, ParseException {
+		return  ReadWriteFileJson.readerFileJson("Plantes");
 	}
 
-	public void setUrl(String fInputS) {
-		this.url = fInputS;
-	}
-
-	public static ArrayList<Plantes> getPlanteList() {
-		return planteList;
-	}
-
-	public void addPlanteList(Plantes plante) {
-		Plantes.planteList.add(plante);
-	}
+	public void addPlanteList(Plantes plante) { /*Plantes.planteList.add(plante);*/ }
 
 	public static boolean isUpdate() {
 		return isUpdate;

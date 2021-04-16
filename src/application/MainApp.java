@@ -19,6 +19,7 @@ public class MainApp extends Application {
 			scene.setFill(Color.TRANSPARENT);
 			primaryStage.setScene(scene);
 			primaryStage.show();
+			primaryStage.setResizable(false);
 
 		}catch (Exception e){
 			e.printStackTrace();

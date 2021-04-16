@@ -25,13 +25,45 @@ public class MainAppController implements Initializable{
     @FXML private Button btnListeSuivis;
     @FXML private VBox Vbox;
     
-    @FXML void PageFormZone() { }
-    @FXML void PageListePlantes() { }
+
+    
     @FXML void PageListeProjet() { }
     @FXML void PageListeSuivis() { }
     @FXML void PageMeteo() { }
     @FXML void PagePlanning() { }
-    @FXML void PageFormEvent() { }
+    
+    @FXML void PageListePlantes() {
+    	try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PageListePlantes.fxml"));
+			this.Vbox.getChildren().removeAll();
+			this.Vbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+    }
+    
+    @FXML void PageFormZone() { 
+    	try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PageFormZone.fxml"));
+			this.Vbox.getChildren().removeAll();
+			this.Vbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+    }
+    
+    @FXML
+    void FormActivite() {
+    	try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PageFormActivite.fxml"));
+			this.Vbox.getChildren().removeAll();
+			this.Vbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+    }
+    
+    @FXML void PageFormEvent() { 
+    	try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PageFormEvent.fxml"));
+			this.Vbox.getChildren().removeAll();
+			this.Vbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+    }
 
     
 

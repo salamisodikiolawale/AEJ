@@ -41,6 +41,7 @@ public class PlantePageControl implements Initializable{
     @FXML private Label mesureF;
     @FXML private Label labNote;
     @FXML private ImageView imgView;
+    private String id;
   
 
 
@@ -53,15 +54,14 @@ public class PlantePageControl implements Initializable{
 	}
 	
 		public void ShowData(String idShow) throws IOException, ParseException{
-		 //System.out.println("Je suis dans plante 1");
+	
 			if(idShow != null) {
-				
+
 		    	JSONObject jsnObject  = (JSONObject) Plantes.getData(idShow);
-			 	
 		    	JSONObject mesureObj = (JSONObject) jsnObject.get("Mesures");
 		    	@SuppressWarnings("unchecked")
 				List<String> listeUnite = (List<String>) jsnObject.get("Unite");
-		    
+		    	this.id = (String) jsnObject.get("Id");
 		    	labTitle.setText((String) jsnObject.get("Nom"));
 		    	labNom.setText((String) jsnObject.get("Nom"));
 		    	labVariete.setText((String) jsnObject.get("Variete"));
@@ -87,36 +87,25 @@ public class PlantePageControl implements Initializable{
 		public static JSONObject lastData() throws IOException, ParseException {
 			JSONArray jsA = ReadWriteFileJson.readerFileJson("Plantes");
 			return (JSONObject) jsA.get(jsA.size()-1);
-			
 		}
 		
 
 	 @FXML void modifier() throws IOException, ParseException {
-	    	//JSONObject jsnObject  = (JSONObject) Plantes.getData(Plantes.getIdShow());
-	    	//Plantes.setIdUpdate(Plantes.getIdShow());
-	    	//Plante.idPlante = jsnObject.get("Id").toString();	
+	    	Plantes.setIdUpdate(this.id);	
 		 	Plantes.setIsUpdate(true);
-		 	Plantes.setIdShow(Plantes.getIdShow());
-	    	//try {
-				Parent fxml = FXMLLoader.load(getClass().getResource("/views/PageFormPlante.fxml"));
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//			}
+		 	Plantes.setIdShow(this.id);
+			Parent fxml = FXMLLoader.load(getClass().getResource("/views/PageFormPlante.fxml"));
 			this.PagePlanteVbox.getChildren().removeAll();
 			this.PagePlanteVbox.getChildren().setAll(fxml);
-				System.out.println("PLantePageControl");
-	    }
+	       }
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		System.out.println("Je suis dans plante");
 		try {
 			ShowData(Plantes.getIdShow());
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

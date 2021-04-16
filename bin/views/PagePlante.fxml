@@ -19,8 +19,7 @@
             <Separator layoutX="36.0" layoutY="42.0" prefWidth="200.0" />
             <Separator layoutX="488.0" layoutY="42.0" prefWidth="200.0" />
             <Label layoutX="94.0" layoutY="219.0" text="Couleur : " />
-            <Button layoutX="379.0" layoutY="545.0" mnemonicParsing="false" onAction="#modifier" prefHeight="24.0" prefWidth="143.0" text="Modifier" />
-            <Button layoutX="136.0" layoutY="545.0" mnemonicParsing="false" text="Lier à un évènement" />
+            <Button layoutX="259.0" layoutY="545.0" mnemonicParsing="false" onAction="#modifier" prefHeight="24.0" prefWidth="143.0" text="Modifier" />
             <ImageView fx:id="imgView" fitHeight="80.0" fitWidth="143.0" layoutX="276.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../Téléchargements/a%20reclasser/Media/images/img6.jpg" />

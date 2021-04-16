@@ -22,6 +22,7 @@
             <Button fx:id="btnFormPlante" layoutY="105.0" mnemonicParsing="false" onAction="#PageFormPlante" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle plante" />
             <Button fx:id="btnFormZone" layoutY="213.0" mnemonicParsing="false" onAction="#PageFormZone" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle zone" />
             <Button layoutY="266.0" mnemonicParsing="false" onAction="#FormMesure" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle mesure" />
+            <Button layoutY="316.0" mnemonicParsing="false" onAction="#FormActivite" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle activité" />
          </children>
       </AnchorPane>
       <Pane layoutX="200.0" prefHeight="68.0" prefWidth="700.0" styleClass="menuHaut" stylesheets="@../application/application.css">

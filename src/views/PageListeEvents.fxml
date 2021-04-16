@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListePlanteControl">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" stylesheets="@../application/application.css">
+         <children>
+            <Label layoutX="22.0" layoutY="41.0" text="Liste des évènements" />
+            <TableView layoutY="100.0" prefHeight="499.0" prefWidth="700.0">
+              <columns>
+                <TableColumn fx:id="idTabView" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="ActiviteTabView" prefWidth="79.0" text="Plantes" />
+                  <TableColumn fx:id="noteTabView" prefWidth="135.0" text="Activités" />
+                  <TableColumn fx:id="dateTabView" prefWidth="155.0" text="Dates" />
+                  <TableColumn fx:id="noteTabView1" prefWidth="382.0" text="Notes" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

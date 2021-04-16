@@ -10,6 +10,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+
 	public abstract class  ReadWriteFileJson{
 	
 
@@ -28,5 +31,14 @@ import org.json.simple.parser.ParseException;
 	    file.flush();
 	    file.close();
 	}
+	
+	 @SuppressWarnings("unused")
+	public static void showAlertWithHeaderText(String title, String msg) {
+	        Alert alert = new Alert(AlertType.INFORMATION);
+	        alert.setTitle(title);
+	        alert.setHeaderText("");
+	        alert.setContentText(msg);
+	        alert.showAndWait();
+	    }
 
 }
