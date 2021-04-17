@@ -3,7 +3,6 @@ package controllers;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
@@ -18,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import models.Plantes;
@@ -44,13 +44,48 @@ public class PlantePageControl implements Initializable{
     @FXML private Label labNote;
     @FXML private ImageView imgView;
     private String id;
+    private String myUrl;
     @SuppressWarnings("unused")
 	private String[] tabImage;
+    Parent fxml;
   
 
 
     /***************************************************************************/
 
+    @FXML
+    void faireSuivi() {
+    	try {
+  
+    		PageFormSuiviControl.setIdPlante(labNom.getText()+"_"+labDate.getText().toString());
+    		FXMLLoader fxl = new FXMLLoader();
+    		fxl.setLocation(getClass().getResource("/views/PageFormSuivi.fxml"));
+    		VBox vb= fxl.load();
+    		PageFormSuiviControl pageformSuivi = fxl.getController();
+    		//pageformSuivi.setIdPlante(labNom.getText()+"_"+labDate.getText().toString());
+    		pageformSuivi.setUrl(this.myUrl);
+    		this.PagePlanteVbox.getChildren().removeAll();
+			this.PagePlanteVbox.getChildren().setAll(vb);
+			
+		} catch (IOException e) { e.printStackTrace(); }
+    }
+
+    @FXML
+    void listeSuivi() {
+    	try {
+    		ListeSuiviControl.setIdplante(labNom.getText()+"_"+labDate.getText().toString());
+			FXMLLoader fxl = new FXMLLoader();
+    		fxl.setLocation(getClass().getResource("/views/PageListeSuivis.fxml"));
+    		VBox vb = fxl.load();
+    		ListeSuiviControl listeSuivi = fxl.getController();
+    		
+    		listeSuivi.setUrl(this.myUrl);
+    		
+    		this.PagePlanteVbox.getChildren().removeAll();
+			this.PagePlanteVbox.getChildren().setAll(vb);
+		} catch (IOException e) { e.printStackTrace(); }
+    }
+    
     @SuppressWarnings("unused")
 	private Plantes plantes;
 	public PlantePageControl() {
@@ -81,6 +116,7 @@ public class PlantePageControl implements Initializable{
 		    	mesusureL.setText(listeUnite.get(1));
 		    	mesureP.setText(listeUnite.get(2));
 		    	mesureF.setText(listeUnite.get(3));
+		    	myUrl = (String) jsnObject.get("Url");
 		    	Image i = new Image(getClass().getResourceAsStream((String) jsnObject.get("Url")));
 		    	imgView.setImage(i);
 		    	//Image i = new Image("test.png");

@@ -2,8 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Random;
 import java.util.ResourceBundle;
 
 import org.json.simple.parser.ParseException;
@@ -16,8 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import models.Plantes;
@@ -37,7 +33,7 @@ public class ItemPlanteControl implements Initializable{
 	 private Plantes plante;
 	 Parent fxml;
 	 
-	 private ArrayList<String> urlList = new ArrayList<String>();
+	 //private ArrayList<String> urlList = new ArrayList<String>();
 	 
 	 
 	 
@@ -62,11 +58,12 @@ public class ItemPlanteControl implements Initializable{
 	 
 	 public void setData(Plantes plante) {
 		 this.plante = plante;
-		 
+		 if(this.plante.getUrl()!=null) {
 		 lblNom.setText(this.plante.getNom());
 		 lblPoids.setText(this.plante.getPoids().toString()+" "+this.plante.getHauteurLargeurPoid());
 		 lblVariete.setText(this.plante.getVariete());
-		 Image i = new Image(getClass().getResourceAsStream(plante.getUrl()));
+		
+		 Image i = new Image(getClass().getResourceAsStream(this.plante.getUrl().toString()));
 		 img.setImage(i);
 //		 Random random = new Random();
 //		 int nb;
@@ -75,6 +72,9 @@ public class ItemPlanteControl implements Initializable{
 //		 this.plante.setUrl("/images/"+this.urlList.get(nb)+".jpg");
 //		 Image i = new Image(getClass().getResourceAsStream(plante.getUrl()));
 //		 img.setImage(i);
+		 }else {
+			 System.out.println("Image is null");
+		 }
 	 }
 	 
 //	 public void shuffleUrlList() {

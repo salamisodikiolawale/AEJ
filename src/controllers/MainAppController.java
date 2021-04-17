@@ -22,14 +22,13 @@ public class MainAppController implements Initializable{
     @FXML private Button btnListeProjet;
     @FXML private Button btnListePlantes;
     @FXML private Button btnMeteo;
-    @FXML private Button btnListeSuivis;
     @FXML private VBox Vbox;
+    @FXML private Button btnListeEvents;
     
 
     
     @FXML void PageListeProjet() { }
     @FXML void PageMeteo() { }
-    @FXML void PagePlanning() { }
     
     
     @FXML void PageListeSuivis() throws IOException {
@@ -46,12 +45,24 @@ public class MainAppController implements Initializable{
 		} catch (IOException e) { e.printStackTrace(); }
     }
     
+    @FXML void PageListeEvents() {
+    	try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PageListeEvents.fxml"));
+			this.Vbox.getChildren().removeAll();
+			this.Vbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+    }
+    
     @FXML void PageFormZone() { 
     	try {
 			fxml = FXMLLoader.load(getClass().getResource("/views/PageFormZone.fxml"));
 			this.Vbox.getChildren().removeAll();
 			this.Vbox.getChildren().setAll(fxml);
 		} catch (IOException e) { e.printStackTrace(); }
+    }
+    
+    @FXML void PagePlanning() { 
+    
     }
     
     @FXML

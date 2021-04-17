@@ -34,8 +34,8 @@
             <Label layoutX="94.0" layoutY="434.0" text="Largeur :" />
             <Label layoutX="96.0" layoutY="465.0" text="Poids :" />
             <Label layoutX="97.0" layoutY="499.0" text="Longeur  des feuilles :" />
-            <Button layoutX="500.0" layoutY="453.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="164.0" text="Liste des suivis &gt;&gt;" />
-            <Button layoutX="500.0" layoutY="406.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="164.0" text="Faire un suivi &gt;&gt;" />
+            <Button layoutX="500.0" layoutY="453.0" mnemonicParsing="false" onAction="#listeSuivi" prefHeight="24.0" prefWidth="164.0" text="Liste des suivis &gt;&gt;" />
+            <Button layoutX="500.0" layoutY="406.0" mnemonicParsing="false" onAction="#faireSuivi" prefHeight="24.0" prefWidth="164.0" text="Faire un suivi &gt;&gt;" />
             <Label fx:id="labNom" layoutX="169.0" layoutY="167.0" />
             <Label fx:id="labVariete" layoutX="169.0" layoutY="192.0" />
             <Label fx:id="labCouleur" layoutX="169.0" layoutY="219.0" />

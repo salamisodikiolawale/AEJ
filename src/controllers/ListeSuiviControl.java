@@ -1,10 +1,8 @@
 package controllers;
 
-import java.awt.Insets;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import org.json.simple.JSONArray;
@@ -15,20 +13,28 @@ import application.ReadWriteFileJson;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import models.Events;
+import javafx.scene.layout.VBox;
 import models.Plantes;
+import models.Suivis;
 
 public class ListeSuiviControl implements Initializable {
 
 	
+	@FXML
+	private VBox Vbox;
+	    
+	   
     @FXML
     private HBox HBox;
+    
+ 
+    Parent fxml;
 
     @FXML
     private ScrollPane ScrollPane;
@@ -38,93 +44,113 @@ public class ListeSuiviControl implements Initializable {
 
     @FXML
     private Label lblNom;
-    private Plantes plantes = new Plantes();
-    private Events event = new Events();
+    
+    
+    //private Plantes plante = new Plantes();
+    public static String idplante;
+    private String url;
+    private Suivis Suiv;
+    private Plantes plante;
+    
+    @FXML
+    void pagePlante() {
+    	try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PagePlante.fxml"));
+			this.Vbox.getChildren().removeAll();
+			this.Vbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+
+    }
     
     
     
-    ArrayList<Object[]> listEventPlante = new ArrayList<Object[]>();
-    Object[] tabEventPlante;
+    ArrayList<Suivis> PlanteSuivi = new ArrayList<Suivis>();
+
     	
     
 	@SuppressWarnings({ "unchecked", "static-access" })
-	private ArrayList<Object[]> getData() throws IOException, ParseException{
+	private ArrayList<Suivis> getData() throws IOException, ParseException{
+		ArrayList<Suivis> listPlanteSuivi = new ArrayList<Suivis>();
+    	JSONArray suivis = ReadWriteFileJson.readerFileJson("Suivis");
     	
-		ArrayList<Object[]> plEv = new ArrayList<Object[]>();
-    	JSONArray eventPlante = ReadWriteFileJson.readerFileJson("EventsPlantes");
     	
-    	eventPlante.forEach(eventplante ->{
-    		
-			JSONObject ep = (JSONObject) eventplante;
-			
-			if(!ep.isEmpty()) {
-				int idEvent = Integer.parseInt(ep.get("IdEvent").toString());
-				String idPlante = ep.get("IdPlantes").toString();
+    	suivis.forEach(suiv ->{
+			JSONObject s = (JSONObject) suiv;
+			String nomPl = "";
+			String varietePl = "";
+			JSONObject planteJsonOb;
+			if(!s.isEmpty()) {
 				
-				JSONObject jsonObjPlante = null;
-				JSONObject jsonObjEvent = null;
-				try {
-					
-					//Recuperation des couples (Event,Plante)
-					jsonObjPlante = plantes.getData(idPlante);
-					jsonObjEvent = event.getData(idEvent);
-					
-				} catch (IOException | ParseException e) {
-					
-					e.printStackTrace();
+				if(s.get("IdPLante").toString().equals(this.getIdplante())) {
+					System.out.println("------s---->"+s.get("IdPLante")+" __ "+this.getIdplante());
+					try {
+						planteJsonOb = this.plante.getData(this.getIdplante());
+						JSONObject plJsonObject = (JSONObject)planteJsonOb;
+						nomPl = planteJsonOb.get("Nom").toString();
+						varietePl=planteJsonOb.get("Variete").toString();
+						
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ParseException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					Suiv = new Suivis();
+					lblNom.setText(nomPl);
+					Suiv.setNomPl(nomPl);
+					Suiv.setVariete(varietePl);
+					Suiv.setCouleur(s.get("Couleur").toString());
+					Suiv.setDate(s.get("Date").toString());
+					Suiv.setHauteur(Double.parseDouble(s.get("Hauteur").toString()));
+					Suiv.setLargeur(Double.parseDouble(s.get("Largeur").toString()));
+					Suiv.setPoids(Double.parseDouble(s.get("Poids").toString()));
+					Suiv.setIdPlante(s.get("IdPLante").toString());
+					Suiv.setNote(s.get("Note").toString());
+					Suiv.setUniteH(s.get("UniteH").toString());
+					Suiv.setUniteL(s.get("UniteL").toString());
+					Suiv.setUniteP(s.get("UniteP").toString());
+					Suiv.setUrl(s.get("Url").toString());
+					listPlanteSuivi.add(Suiv);
 				}
-				if((!jsonObjPlante.isEmpty()) && (!jsonObjEvent.isEmpty())){
-					//Initialisation des couples d'objet(Event et plante)
-					jsonObjEvent = (JSONObject)jsonObjEvent;
-					jsonObjPlante = (JSONObject) jsonObjPlante;
-					event = new Events();
-					System.out.println(jsonObjEvent.get("IdEvent").toString());
-					event.setId(Integer.parseInt(jsonObjEvent.get("IdEvent").toString()));
-					event.setActivite(jsonObjEvent.get("Activite").toString());
-					event.setDate(jsonObjEvent.get("Date").toString());
-					event.setNote(jsonObjEvent.get("Note").toString());
-					
-					plantes = new Plantes();
-					plantes.setId("Id");
-					plantes.setNom(jsonObjPlante.get("Nom").toString());
-					plantes.setVariete(jsonObjPlante.get("Variete").toString());
-					plantes.setCouleur(jsonObjPlante.get("Couleur").toString());
-					plantes.setNote(jsonObjEvent.get("Note").toString());
-					plantes.setDate(jsonObjEvent.get("Date").toString());
-					//JSONObject jsonMesure = (JSONObject) jsonObjPlante.get("Mesures"); 
-					//plantes.setMesures(jsonMesure.get(arg0), value);
-					plantes.setUrl(jsonObjPlante.get("Url").toString());
-					JSONObject jsonMesure = (JSONObject) jsonObjPlante.get("Mesures");
-					plantes.setHauteur(Double.parseDouble(jsonMesure.get("Hauteur").toString()));
-					plantes.setLargeur(Double.parseDouble(jsonMesure.get("Largeur").toString()));
-					plantes.setPoids(Double.parseDouble(jsonMesure.get("Poids").toString()));
-					plantes.setUrl(jsonObjPlante.get("Url").toString());
-					
-					tabEventPlante = new Object[2];
-					tabEventPlante[0] = event;
-					tabEventPlante[1] = plantes;
-					plEv.add(tabEventPlante);
-				}else {
-					System.out.println("[jsonObjEvent,jsonObjPlante]");
-				}
+			}else {System.out.println("[jsonObjEvent,jsonObjPlante]");}
 				
-			}else {
-				System.out.println("event et plante sont vide");
-			}
 			
 		});
     	
-		return plEv;
+ 
+    	
+
+		//Recuperation 
+//		JSONObject jsonObjPlante = plante.getData(this.getIdplante());
+//
+//		if((!jsonObjPlante.isEmpty())){
+//			jsonObjPlante = (JSONObject) jsonObjPlante;
+//			
+//			plante = new Plantes();
+//			plante.setId("Id");
+//			lblNom.setText(jsonObjPlante.get("Nom").toString());
+//			plante.setNom(jsonObjPlante.get("Nom").toString());
+//			plante.setVariete(jsonObjPlante.get("Variete").toString());
+//			plante.setCouleur(jsonObjPlante.get("Couleur").toString());
+//			plante.setNote(jsonObjPlante.get("Note").toString());
+//			plante.setDate(jsonObjPlante.get("Date").toString());
+//			plante.setUrl(jsonObjPlante.get("Url").toString());
+//			JSONObject jsonMesure = (JSONObject) jsonObjPlante.get("Mesures");
+//			plante.setHauteur(Double.parseDouble(jsonMesure.get("Hauteur").toString()));
+//			plante.setLargeur(Double.parseDouble(jsonMesure.get("Largeur").toString()));
+//			plante.setPoids(Double.parseDouble(jsonMesure.get("Poids").toString()));
+//			plante.setUrl(jsonObjPlante.get("Url").toString());
+//		}
     	
     	
-    	
-    	
+		return listPlanteSuivi;
     }
     
     public void remplirGrid() {
     	try {
-    		System.out.println("gztData()"+getData());
-			listEventPlante.addAll(getData());
+    		System.out.println(getData());
+    		PlanteSuivi.addAll(getData());
 			
 		} catch (IOException | ParseException e1) {
 			// TODO Auto-generated catch block
@@ -135,15 +161,16 @@ public class ListeSuiviControl implements Initializable {
 			int column =0;
 			int row = 0;
 			
-			for(int i=listEventPlante.size()-1; i>=0; i--) {
+			for(int i=PlanteSuivi.size()-1; i>=0; i--) {
+				System.out.println("Je rentre dans la boucle");
 				FXMLLoader fxl = new FXMLLoader();
 				fxl.setLocation(getClass().getResource("/views/ItemSuivi.fxml"));
 				
 				AnchorPane anchorpane = fxl.load();
 				
 				ItemSuiviControl itemSuiviControl = fxl.getController();
-				System.out.println("class"+((Events)listEventPlante.get(0)[0]));
-				itemSuiviControl.setData(((Events)listEventPlante.get(i)[0]), ((Plantes)listEventPlante.get(i)[1]));
+				//System.out.println("class"+((Events)listEventPlante.get(0)[0]));
+				itemSuiviControl.setData(PlanteSuivi.get(i));
 					if(column==4) {
 						column=0;
 						row++;
@@ -160,6 +187,24 @@ public class ListeSuiviControl implements Initializable {
 		}
     }
     
+
+
+	public String getIdplante() {
+		return idplante;
+	}
+
+	public static void setIdplante(String idplante) {
+		ListeSuiviControl.idplante = idplante;
+	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		remplirGrid();

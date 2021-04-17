@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -28,10 +27,7 @@
             <Label layoutX="66.0" layoutY="400.0" prefHeight="9.0" prefWidth="67.0" text="Largeure :" />
             <Label layoutX="65.0" layoutY="438.0" text="Poids :" />
             <Label layoutX="66.0" layoutY="476.0" text="Longeur Feuilles :" />
-            <ImageView fx:id="imgPlante" fitHeight="131.0" fitWidth="193.0" layoutX="470.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../first_image.jpg" />
-               </image></ImageView>
+            <ImageView fx:id="imgPlante" fitHeight="131.0" fitWidth="193.0" layoutX="470.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true" />
             <TextField fx:id="txtVariete" layoutX="206.0" layoutY="111.0" prefHeight="24.0" prefWidth="200.0" />
             <TextField fx:id="txtHauteur" layoutX="198.0" layoutY="351.0" prefHeight="24.0" prefWidth="116.0" />
             <TextField fx:id="txtLargeur" layoutX="198.0" layoutY="396.0" prefHeight="24.0" prefWidth="116.0" />

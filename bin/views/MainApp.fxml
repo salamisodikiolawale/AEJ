@@ -33,22 +33,22 @@
                   <String fx:value="btnMenuHaut" />
                   <String fx:value="textBtnMenuHaut" />
                </styleClass></Button>
-            <Button fx:id="btnListeProjet" layoutX="450.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListeProjet" stylesheets="@../application/application.css" text="Liste des projets">
+            <Button fx:id="btnListeProjet" layoutX="478.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListeProjet" stylesheets="@../application/application.css" text="Liste des projets">
                <styleClass>
                   <String fx:value="textBtnMenuHaut" />
                   <String fx:value="btnMenuHaut" />
                </styleClass></Button>
-            <Button fx:id="btnListePlantes" layoutX="164.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListePlantes" stylesheets="@../application/application.css" text="Liste des plantes">
+            <Button fx:id="btnListePlantes" layoutX="157.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListePlantes" stylesheets="@../application/application.css" text="Liste des plantes">
                <styleClass>
                   <String fx:value="textBtnMenuHaut" />
                   <String fx:value="btnMenuHaut" />
                </styleClass></Button>
-            <Button fx:id="btnMeteo" layoutX="601.0" layoutY="21.0" mnemonicParsing="false" onAction="#PageMeteo" stylesheets="@../application/application.css" text="Météo">
+            <Button fx:id="btnMeteo" layoutX="612.0" layoutY="21.0" mnemonicParsing="false" onAction="#PageMeteo" stylesheets="@../application/application.css" text="Météo">
                <styleClass>
                   <String fx:value="textBtnMenuHaut" />
                   <String fx:value="btnMenuHaut" />
                </styleClass></Button>
-            <Button fx:id="btnListeSuivis" layoutX="313.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListeSuivis" stylesheets="@../application/application.css" text="Liste des suivis">
+            <Button fx:id="btnListeEvents" layoutX="304.0" layoutY="21.0" mnemonicParsing="false" onAction="#PageListeEvents" stylesheets="@../application/application.css" text="Liste des évènements">
                <styleClass>
                   <String fx:value="textBtnMenuHaut" />
                   <String fx:value="btnMenuHaut" />

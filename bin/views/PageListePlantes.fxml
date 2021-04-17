@@ -16,7 +16,7 @@
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" stylesheets="@../application/application.css">
          <children>
             <Label layoutX="22.0" layoutY="41.0" text="Les Plantes" />
-            <TextField fx:id="txtRecherche" layoutX="398.0" layoutY="37.0" onAction="#txtRechche" />
+            <TextField fx:id="txtRecherche" layoutX="398.0" layoutY="37.0" onAction="#txtRechche" promptText="E: Le Bourganvilliers" />
             <Button layoutX="569.0" layoutY="36.0" mnemonicParsing="false" onAction="#btnRecherche" text="Rechercher" />
             <HBox fx:id="HBox" layoutY="99.0" prefHeight="459.0" prefWidth="700.0">
                <children>

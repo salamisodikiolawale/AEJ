@@ -67,7 +67,7 @@ public class PlanteControl implements Initializable{
 	public PlanteControl() {
 		plantes = new Plantes();
 	}
-	
+
     	
 	/**
 	 * Register the plante and show plante page

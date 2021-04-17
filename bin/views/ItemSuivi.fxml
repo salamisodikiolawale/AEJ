@@ -21,33 +21,41 @@
             </ImageView>
             <VBox fx:id="infosImage" prefHeight="126.0" prefWidth="171.0">
                <children>
-                  <Label fx:id="lblNomEvent" text="nom evenement">
+                  <Label fx:id="lblNomEvent">
                      <VBox.margin>
-                        <Insets bottom="10.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
+                     </VBox.margin></Label>
+                  <Label fx:id="lblCouleur" text="Couleur">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Label fx:id="lblVariete" text="Variété">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
                      </VBox.margin></Label>
                   <Label fx:id="lblDate" text="date">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin></Label>
-                  <Label fx:id="lblVariete" text="Variété">
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="5.0" />
                      </VBox.margin></Label>
                   <Label fx:id="lblHauteur" text="Hauteur">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
                   <Label fx:id="lblLargeur" text="Largeur">
                      <VBox.margin>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="5.0" />
                      </VBox.margin>
                   </Label>
                   <Label fx:id="lblPoids" text="Poids">
                      <padding>
-                        <Insets bottom="10.0" />
+                        <Insets bottom="5.0" />
                      </padding></Label>
-                  <Label fx:id="lblNote" text="Note" />
+                  <Label fx:id="lblNote" text="Note">
+                     <VBox.margin>
+                        <Insets bottom="35.0" />
+                     </VBox.margin></Label>
                </children>
                <VBox.margin>
                   <Insets top="5.0" />

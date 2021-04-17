@@ -16,6 +16,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -36,10 +37,10 @@ public class ListePlanteControl implements Initializable{
     @FXML void btnRecherche() throws IOException, ParseException {
     
     	if(txtRecherche.getText().equals("")) {
+    		listPlante.clear();
     		GradPane.getChildren().clear();
     		remplirGrid();
     	}else {
-    		GradPane.getChildren().clear();
         	remplirGrid(txtRecherche.getText());
     	}
     	
@@ -47,14 +48,12 @@ public class ListePlanteControl implements Initializable{
     
     @FXML
     void txtRechche() throws IOException, ParseException {
-
+    	
     	if(txtRecherche.getText().equals("")) {
-    		GradPane.getChildren().clear();
     		listPlante.clear();
+    		GradPane.getChildren().clear();
     		remplirGrid();
     	}else {
-    		GradPane.getChildren().clear();
-    		listPlante.clear();
         	remplirGrid(txtRecherche.getText());
     	}
     }
@@ -144,6 +143,7 @@ public class ListePlanteControl implements Initializable{
     	pl.setNom(planteJsOb.get("Nom").toString());
     	pl.setVariete(planteJsOb.get("Variete").toString());
     	pl.setPoids(Double.parseDouble(((JSONObject)planteJsOb.get("Mesures")).get("Poids").toString()));
+    	pl.setUrl(planteJsOb.get("Url").toString());
     	listPlante.clear();
     	GradPane.getChildren().clear();
     	listPlante.add(pl);
