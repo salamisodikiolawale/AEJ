@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox fx:id="FormePlanteVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PageFormSuiviControl">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0">
+         <children>
+            <Text layoutX="264.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Faire le suivi de  nom plante" AnchorPane.leftAnchor="264.0" AnchorPane.rightAnchor="265.47900390625" AnchorPane.topAnchor="35.0" />
+            <Label layoutX="69.0" layoutY="147.0" text="Couleur :" />
+            <Label layoutX="67.0" layoutY="175.0" text="Date suivi:" />
+            <Label layoutX="69.0" layoutY="229.0" text="Note :" />
+            <Label layoutX="66.0" layoutY="355.0" text="Hauteur :" />
+            <Label layoutX="66.0" layoutY="400.0" prefHeight="9.0" prefWidth="67.0" text="Largeure :" />
+            <Label layoutX="68.0" layoutY="438.0" text="Poids :" />
+            <ImageView fx:id="imgPlante" fitHeight="131.0" fitWidth="193.0" layoutX="470.0" layoutY="74.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../first_image.jpg" />
+               </image></ImageView>
+            <TextField fx:id="txtHauteur" layoutX="198.0" layoutY="351.0" prefHeight="24.0" prefWidth="116.0" />
+            <TextField fx:id="txtLargeur" layoutX="198.0" layoutY="396.0" prefHeight="24.0" prefWidth="116.0" />
+            <TextField fx:id="txtPoids" layoutX="198.0" layoutY="434.0" prefHeight="24.0" prefWidth="116.0" />
+            <ComboBox fx:id="cmbHauteur" layoutX="314.0" layoutY="351.0" onAction="#remplirListeUniteHauteur" onMouseClicked="#cmbHauteur" prefHeight="24.0" prefWidth="89.0" />
+            <TextArea fx:id="txtNote" layoutX="206.0" layoutY="207.0" prefHeight="65.0" prefWidth="200.0" />
+            <TextField fx:id="txtCouleur" layoutX="206.0" layoutY="139.0" prefHeight="24.0" prefWidth="200.0" />
+            <ComboBox fx:id="cmbLargeur" layoutX="314.0" layoutY="396.0" prefHeight="24.0" prefWidth="89.0" />
+            <ComboBox fx:id="cmbPoids" layoutX="314.0" layoutY="434.0" prefHeight="24.0" prefWidth="89.0" />
+            <Text layoutX="263.0" layoutY="323.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Données complémentaires" />
+            <Button fx:id="btnEnregistrer" layoutX="65.0" layoutY="530.0" mnemonicParsing="false" onAction="#EnregistreOperation" text="Enrégistrer l'opération" />
+            <Button fx:id="btnAnnuler" layoutX="295.0" layoutY="530.0" mnemonicParsing="false" onAction="#Annuler" text="Annuler l'opération" />
+            <Separator layoutX="28.0" layoutY="317.0" prefWidth="200.0" />
+            <Separator layoutX="481.0" layoutY="316.0" prefWidth="200.0" />
+            <Separator layoutX="36.0" layoutY="42.0" prefWidth="200.0" />
+            <Separator layoutX="488.0" layoutY="42.0" prefWidth="200.0" />
+            <DatePicker fx:id="datePicker" layoutX="208.0" layoutY="174.0" />
+            <Label fx:id="labUrlImage" layoutX="504.0" layoutY="256.0" text="Aucune sélectionnée " />
+            <Button fx:id="btnImporteImage" layoutX="488.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#importerImage" text="Sélectionner une image" />
+            <Label fx:id="labConfirAddMesure" layoutX="530.0" layoutY="430.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>

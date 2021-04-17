@@ -43,6 +43,21 @@ public class Events {
 		int var = Integer.parseInt(lastEvent.get("IdEvent").toString());
 		return var;
 	}
+	
+	public JSONObject getData(int id) throws IOException, ParseException {
+		
+		JSONArray jsonArray = ReadWriteFileJson.readerFileJson("Events");
+		JSONObject data;
+		for(int i=0; i<jsonArray.size(); i++) {
+			data = (JSONObject) jsonArray.get(i);
+			
+			if(!data.isEmpty())
+				if(Integer.parseInt(data.get("IdEvent").toString()) ==id)
+					return data;
+		};
+		return null;
+		
+	}
 
 	public String getActivite() {
 		return activite;

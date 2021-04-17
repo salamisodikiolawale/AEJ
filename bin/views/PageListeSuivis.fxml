@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ListeSuiviControl">
    <children>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" styleClass="AnchorPane" stylesheets="@../application/application.css">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" stylesheets="@../application/application.css">
          <children>
-            <Label layoutX="14.0" layoutY="35.0" text="Liste suivi" />
-            <Button layoutX="511.0" layoutY="39.0" mnemonicParsing="false" text="Visualiser le graphe " />
-            <Button layoutX="356.0" layoutY="39.0" mnemonicParsing="false" text="Nouveau suivi" />
-            <Separator layoutX="7.0" layoutY="104.0" prefWidth="200.0" />
-            <Separator layoutX="486.0" layoutY="107.0" prefWidth="200.0" />
-            <Label layoutX="274.0" layoutY="97.0" text="Le bougainvillier" />
-            <ListView layoutX="36.0" layoutY="151.0" prefHeight="185.0" prefWidth="635.0" />
-            <ListView layoutX="36.0" layoutY="346.0" prefHeight="185.0" prefWidth="635.0" />
+            <Label layoutX="14.0" layoutY="83.0" text="Liste des suivis" />
+            <HBox fx:id="HBox" layoutY="99.0" prefHeight="459.0" prefWidth="700.0">
+               <children>
+                  <ScrollPane fx:id="ScrollPane" prefHeight="459.0" prefWidth="680.0">
+                     <HBox.margin>
+                        <Insets left="10.0" top="10.0" />
+                     </HBox.margin>
+                     <content>
+                        <GridPane fx:id="GradPane" prefHeight="6.0" prefWidth="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                        </GridPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+            <Label fx:id="lblNom" layoutX="295.0" layoutY="33.0" text="Nom_plante" />
          </children>
       </AnchorPane>
    </children>

@@ -28,9 +28,15 @@ public class MainAppController implements Initializable{
 
     
     @FXML void PageListeProjet() { }
-    @FXML void PageListeSuivis() { }
     @FXML void PageMeteo() { }
     @FXML void PagePlanning() { }
+    
+    
+    @FXML void PageListeSuivis() throws IOException {
+    	fxml = FXMLLoader.load(getClass().getResource("/views/PageListeSuivis.fxml"));
+		this.Vbox.getChildren().removeAll();
+		this.Vbox.getChildren().setAll(fxml);
+    }
     
     @FXML void PageListePlantes() {
     	try {
@@ -43,6 +49,15 @@ public class MainAppController implements Initializable{
     @FXML void PageFormZone() { 
     	try {
 			fxml = FXMLLoader.load(getClass().getResource("/views/PageFormZone.fxml"));
+			this.Vbox.getChildren().removeAll();
+			this.Vbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+    }
+    
+    @FXML
+    void FormSuivi() {
+    	try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PageFormSuivi.fxml"));
 			this.Vbox.getChildren().removeAll();
 			this.Vbox.getChildren().setAll(fxml);
 		} catch (IOException e) { e.printStackTrace(); }
