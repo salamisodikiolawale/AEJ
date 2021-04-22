@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,12 +22,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.stage.FileChooser;
-import javafx.stage.FileChooser.ExtensionFilter;
 import models.Suivis;
 
 public class PageFormSuiviControl implements Initializable{
@@ -57,7 +53,11 @@ public class PageFormSuiviControl implements Initializable{
 
     
     @FXML void Annuler() {
-
+		txtCouleur.setText("");
+		txtNote.setText("");
+		txtHauteur.setText("");
+		txtLargeur.setText("");
+		txtPoids.setText("");
     }
     
     @FXML void pagePlante() {
@@ -81,6 +81,9 @@ public class PageFormSuiviControl implements Initializable{
     		if(txtHauteur.getText().isEmpty()) {txtHauteur.setText("0.0");}
     		if(txtPoids.getText().isEmpty()) {txtPoids.setText("0.0");}
     		if(txtNote.getText().isEmpty()) {txtNote.setText("");}
+    		if(cmbHauteur.getValue()==null) {cmbHauteur.setValue("");}
+    		if(cmbLargeur.getValue()==null) {cmbLargeur.setValue("");}
+    		if(cmbPoids.getValue()==null) {cmbPoids.setValue("");}
     	
 	    	Suivis suivis = new Suivis();
 	    	suivis.setIdPlante(idPlante);
@@ -97,6 +100,7 @@ public class PageFormSuiviControl implements Initializable{
 	    	listesuivis.add(suivis.tranformSuiviToObjectJson());
 			ReadWriteFileJson.writeFileJson("Suivis", listesuivis);
 			ReadWriteFileJson.showAlertWithHeaderText("Ajout Suivi", "Le suivi a bien été pris en compte");
+			Annuler();
     	}
     }
     

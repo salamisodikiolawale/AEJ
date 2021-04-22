@@ -17,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import models.Activites;
 import models.Events;
@@ -52,6 +53,15 @@ public class EventControl implements Initializable{
 	    
 	    @FXML
 	    private Button btnAnnlerAjouter;
+//	    
+//	    @FXML
+//	    private RadioButton radioPonctuel;
+//
+//	    @FXML
+//	    private RadioButton radioRecccurent;
+	    
+	    @FXML
+	    private ComboBox<String> listeTypeEvent;
 	    
 	    
 
@@ -63,15 +73,16 @@ public class EventControl implements Initializable{
 	    	event.setActivite(listeActivite.getValue());
 	    	event.setDate(datePicker.getValue().toString());
 	    	event.setNote(txtAreaNote.getText());
+	    	event.setTypeEvent(listeTypeEvent.getValue());
 	    
 	    	 
 	    	if(listePlante.getValue()!=null) {
-	    		System.out.println("Je rentre");
 	    		JSONArray eventsPlantes = ReadWriteFileJson.readerFileJson("EventsPlantes");
 	    		JSONObject eventP = new JSONObject();
 	    		eventP.put("IdEvent", event.getId());
 	    		Plantes pl= new Plantes();
 	    		eventP.put("IdPlantes", pl.getId(listePlante.getValue()));
+	    		
 	    		eventsPlantes.add(eventP);
 	    		ReadWriteFileJson.writeFileJson("EventsPlantes", eventsPlantes);
 	    	}
@@ -115,6 +126,14 @@ public class EventControl implements Initializable{
 	    	listePlante.setItems(FxclActivite);
 	    }
 	    
+	    @SuppressWarnings({ "unused", "unchecked" })
+	  		private void remplirCombTypeEvent() throws IOException, ParseException {
+	  	    	ObservableList<String> FxclActivite = FXCollections.observableArrayList();
+	  	    	FxclActivite.add("Ponctuel");
+	  	    	FxclActivite.add("Reccurent");
+	  	    	listeTypeEvent.setItems(FxclActivite);
+	  	    }
+	    
 	    
 	    
 	@Override
@@ -122,6 +141,7 @@ public class EventControl implements Initializable{
 		try {
 			remplirCombListActivite();
 			remplirCombListPlante();
+			remplirCombTypeEvent();
 		} catch (IOException | ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

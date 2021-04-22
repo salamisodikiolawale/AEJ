@@ -36,10 +36,23 @@ public class Plantes{
 	public Plantes() {
 	}
 	
-//	public Plantes(String id,String nom, String variete, String couleur, String date, 
-//			String note, HashMap<String, Double> mesures, List<String> hauteurLargeurPoid, String LongeurFeuille) {
-//		this.setId(id);
-//		this.setNom(nom);
+	public Plantes(String id,String nom, String variete, String couleur, String date, 
+			String note, HashMap<String, Double> mesures, List<String> hauteurLargeurPoid, String LongeurFeuille) {
+		this.setId(id);
+		this.setNom(nom);
+		this.setVariete(variete);
+		this.setCouleur(couleur);
+		this.setDate(date);
+		this.setNote(note);
+//		this.setMesures(mesures);
+//		this.setHauteurLargeurPoid(hauteurLargeurPoid);
+//		this.setLongeurFeuille(LongeurFeuille);String id,String nom, String variete, String couleur, String date, 
+		//String note, HashMap<String, Double> mesures, List<String> hauteurLargeurPoid, String LongeurFeuille
+	}
+	
+	public Plantes(String nom) {
+		//this.setId(id);
+		this.setNom(nom);
 //		this.setVariete(variete);
 //		this.setCouleur(couleur);
 //		this.setDate(date);
@@ -47,7 +60,7 @@ public class Plantes{
 //		this.setMesures(mesures);
 //		this.setHauteurLargeurPoid(hauteurLargeurPoid);
 //		this.setLongeurFeuille(LongeurFeuille);
-//	}
+	}
 //	
 
 	

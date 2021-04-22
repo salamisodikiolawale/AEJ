@@ -23,32 +23,22 @@
             <Button fx:id="btnFormZone" layoutY="213.0" mnemonicParsing="false" onAction="#PageFormZone" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle zone" />
             <Button layoutY="266.0" mnemonicParsing="false" onAction="#FormMesure" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle mesure" />
             <Button layoutY="316.0" mnemonicParsing="false" onAction="#FormActivite" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Nouvelle activité" />
-            <Button layoutX="-1.0" layoutY="368.0" mnemonicParsing="false" onAction="#FormSuivi" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Faire un suivi" />
+            <Button layoutX="-1.0" layoutY="368.0" mnemonicParsing="false" onAction="#FormSuivi" prefHeight="40.0" prefWidth="200.0" styleClass="btnMenuGauche" stylesheets="@../application/application.css" text="Faire un suivi" visible="false" />
          </children>
       </AnchorPane>
       <Pane layoutX="200.0" prefHeight="68.0" prefWidth="700.0" styleClass="menuHaut" stylesheets="@../application/application.css">
          <children>
-            <Button fx:id="btnPlanning" layoutX="54.0" layoutY="20.0" mnemonicParsing="false" onAction="#PagePlanning" stylesheets="@../application/application.css" text="Planning" textAlignment="CENTER">
+            <Button fx:id="btnPlanning" layoutX="148.0" layoutY="20.0" mnemonicParsing="false" onAction="#PagePlanning" stylesheets="@../application/application.css" text="Planning" textAlignment="CENTER">
                <styleClass>
                   <String fx:value="btnMenuHaut" />
                   <String fx:value="textBtnMenuHaut" />
                </styleClass></Button>
-            <Button fx:id="btnListeProjet" layoutX="478.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListeProjet" stylesheets="@../application/application.css" text="Liste des projets">
+            <Button fx:id="btnListePlantes" layoutX="251.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListePlantes" stylesheets="@../application/application.css" text="Liste des plantes">
                <styleClass>
                   <String fx:value="textBtnMenuHaut" />
                   <String fx:value="btnMenuHaut" />
                </styleClass></Button>
-            <Button fx:id="btnListePlantes" layoutX="157.0" layoutY="20.0" mnemonicParsing="false" onAction="#PageListePlantes" stylesheets="@../application/application.css" text="Liste des plantes">
-               <styleClass>
-                  <String fx:value="textBtnMenuHaut" />
-                  <String fx:value="btnMenuHaut" />
-               </styleClass></Button>
-            <Button fx:id="btnMeteo" layoutX="612.0" layoutY="21.0" mnemonicParsing="false" onAction="#PageMeteo" stylesheets="@../application/application.css" text="Météo">
-               <styleClass>
-                  <String fx:value="textBtnMenuHaut" />
-                  <String fx:value="btnMenuHaut" />
-               </styleClass></Button>
-            <Button fx:id="btnListeEvents" layoutX="304.0" layoutY="21.0" mnemonicParsing="false" onAction="#PageListeEvents" stylesheets="@../application/application.css" text="Liste des évènements">
+            <Button fx:id="btnListeEvents" layoutX="398.0" layoutY="21.0" mnemonicParsing="false" onAction="#PageListeEvents" stylesheets="@../application/application.css" text="Liste des évènements">
                <styleClass>
                   <String fx:value="textBtnMenuHaut" />
                   <String fx:value="btnMenuHaut" />

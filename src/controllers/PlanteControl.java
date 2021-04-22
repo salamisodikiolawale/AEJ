@@ -22,6 +22,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -54,7 +55,10 @@ public class PlanteControl implements Initializable{
     @FXML private Label labUrlImage;
     @FXML private Label labNom;  
     @FXML private ImageView imgPlante;
+    @FXML private Button pagePlante;
     private String[] tabImage;
+    public static boolean isAff = false;
+    
     
 
 	
@@ -105,7 +109,7 @@ public class PlanteControl implements Initializable{
 			//L'url a revoir
 			//plantes.setUrl(labUrlImage.getText());
 			tabImage = new String[6];
-			for(int i =0; i<tabImage.length; i++) {
+			for(int i =1; i<tabImage.length; i++) {
 				tabImage[i] = "/images/img"+i+".jpg";
 			}
 			Random r =  new Random();
@@ -123,14 +127,16 @@ public class PlanteControl implements Initializable{
 			
 			try {
 
-					JSONArray liste_plantes = ReadWriteFileJson.readerFileJson("Plantes");
-					liste_plantes.add(plantes.tranformPlanteToObjectJson());
-					ReadWriteFileJson.writeFileJson("Plantes", liste_plantes);
-					ReadWriteFileJson.showAlertWithHeaderText("Création de plante", "Votre plante a bien été enregistrer");
+					
 					if(Plantes.isUpdate()) {
 
 						deletePlante(Plantes.getIdUpdate());
 					}
+					JSONArray liste_plantes = ReadWriteFileJson.readerFileJson("Plantes");
+					liste_plantes.add(plantes.tranformPlanteToObjectJson());
+					ReadWriteFileJson.writeFileJson("Plantes", liste_plantes);
+					ReadWriteFileJson.showAlertWithHeaderText("Création de plante", "Votre plante a bien été enregistrer");
+					
 					//Actualise le idShow
 					Plantes.setIdShow(txtNom.getText()+"_"+datePicker.getValue().toString());
 					fxml = FXMLLoader.load(getClass().getResource("/views/PagePlante.fxml"));
@@ -193,6 +199,7 @@ public class PlanteControl implements Initializable{
 			String[] dates = date.split("-");
 			datePicker.setValue(LocalDate.of(Integer.parseInt(dates[0]), Integer.parseInt(dates[1]), Integer.parseInt(dates[2])));
 			JSONObject mesureObj = (JSONObject) data.get("Mesures");
+			
 			txtHauteur.setText(mesureObj.get("Hauteur").toString());
 			txtLargeur.setText(mesureObj.get("Largeur").toString());
 			txtPoids.setText(mesureObj.get("Poids").toString());
@@ -257,6 +264,14 @@ public class PlanteControl implements Initializable{
 			
 		}
     }
+	
+	@FXML void pagePlante() {
+		try {
+			fxml = FXMLLoader.load(getClass().getResource("/views/PagePlante.fxml"));
+			this.FormePlanteVbox.getChildren().removeAll();
+			this.FormePlanteVbox.getChildren().setAll(fxml);
+		} catch (IOException e) { e.printStackTrace(); }
+	}
 
 
 	
@@ -268,6 +283,12 @@ public class PlanteControl implements Initializable{
 		try {
 			remplirCombo();
 			remplirChamps();
+			if(isAff) {
+				pagePlante.setVisible(true);
+			}else {
+				pagePlante.setVisible(false);
+			}
+			
 		} catch (IOException | ParseException e) {
 			e.printStackTrace();
 		}

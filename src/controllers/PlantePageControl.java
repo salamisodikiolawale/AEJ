@@ -69,6 +69,8 @@ public class PlantePageControl implements Initializable{
 			
 		} catch (IOException e) { e.printStackTrace(); }
     }
+    
+    
 
     @FXML
     void listeSuivi() {
@@ -136,6 +138,8 @@ public class PlantePageControl implements Initializable{
 	    	Plantes.setIdUpdate(this.id);	
 		 	Plantes.setIsUpdate(true);
 		 	Plantes.setIdShow(this.id);
+		 	//Activite le btnNavigation vers la pages de la plante
+		 	PlanteControl.isAff = true;
 			Parent fxml = FXMLLoader.load(getClass().getResource("/views/PageFormPlante.fxml"));
 			this.PagePlanteVbox.getChildren().removeAll();
 			this.PagePlanteVbox.getChildren().setAll(fxml);

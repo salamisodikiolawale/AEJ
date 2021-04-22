@@ -23,10 +23,12 @@
             <Separator layoutX="488.0" layoutY="42.0" prefWidth="200.0" />
             <Label layoutX="95.0" layoutY="199.0" text="Date de l'évènement :" />
             <DatePicker fx:id="datePicker" layoutX="254.0" layoutY="197.0" prefHeight="24.0" prefWidth="252.0" />
-            <Button fx:id="btnAnnuler" layoutX="379.0" layoutY="405.0" mnemonicParsing="false" text="Annuler l'opération" />
-            <Button fx:id="btnEnregistrer" layoutX="229.0" layoutY="406.0" mnemonicParsing="false" onAction="#Enregistrer" text="Enregistrer" />
+            <Button fx:id="btnAnnuler" layoutX="379.0" layoutY="450.0" mnemonicParsing="false" text="Annuler l'opération" />
+            <Button fx:id="btnEnregistrer" layoutX="229.0" layoutY="451.0" mnemonicParsing="false" onAction="#Enregistrer" text="Enregistrer" />
             <Label layoutX="95.0" layoutY="243.0" text="Associer une plante :" />
             <ComboBox fx:id="listePlante" layoutX="255.0" layoutY="239.0" prefHeight="24.0" prefWidth="252.0" />
+            <Label layoutX="98.0" layoutY="389.0" text="Type d'évènement :" />
+            <ComboBox fx:id="listeTypeEvent" layoutX="242.0" layoutY="385.0" prefHeight="24.0" prefWidth="266.0" />
          </children>
       </AnchorPane>
    </children>

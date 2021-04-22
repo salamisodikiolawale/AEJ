@@ -73,16 +73,16 @@ public class ListeSuiviControl implements Initializable {
 		ArrayList<Suivis> listPlanteSuivi = new ArrayList<Suivis>();
     	JSONArray suivis = ReadWriteFileJson.readerFileJson("Suivis");
     	
-    	
-    	suivis.forEach(suiv ->{
-			JSONObject s = (JSONObject) suiv;
+    	for(int i =0; i<suivis.size(); i++) {
+    	//suivis.forEach(suiv ->{
+			JSONObject s = (JSONObject) suivis.get(i);
 			String nomPl = "";
 			String varietePl = "";
 			JSONObject planteJsonOb;
 			if(!s.isEmpty()) {
 				
 				if(s.get("IdPLante").toString().equals(this.getIdplante())) {
-					System.out.println("------s---->"+s.get("IdPLante")+" __ "+this.getIdplante());
+					
 					try {
 						planteJsonOb = this.plante.getData(this.getIdplante());
 						JSONObject plJsonObject = (JSONObject)planteJsonOb;
@@ -90,10 +90,8 @@ public class ListeSuiviControl implements Initializable {
 						varietePl=planteJsonOb.get("Variete").toString();
 						
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (ParseException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 					Suiv = new Suivis();
@@ -115,8 +113,8 @@ public class ListeSuiviControl implements Initializable {
 				}
 			}else {System.out.println("[jsonObjEvent,jsonObjPlante]");}
 				
-			
-		});
+    	}
+		//});
     	
  
     	
@@ -149,7 +147,7 @@ public class ListeSuiviControl implements Initializable {
     
     public void remplirGrid() {
     	try {
-    		System.out.println(getData());
+
     		PlanteSuivi.addAll(getData());
 			
 		} catch (IOException | ParseException e1) {

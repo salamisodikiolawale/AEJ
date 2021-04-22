@@ -9,13 +9,16 @@ import org.json.simple.parser.ParseException;
 
 import application.ReadWriteFileJson;
 
-public class Events {
+public class Events{
 	
 	private int id;
-	private String activite;
 	private String date;
-	private ArrayList<Plantes> listePlante;
 	private String note;
+	private String activite;
+	@SuppressWarnings("unused")
+	private String typeEvent;
+	private ArrayList<Plantes> listePlante;
+	
 	
 
 	public Events() {
@@ -34,13 +37,21 @@ public class Events {
 		events.put("Activite", getActivite());
 		events.put("Date", getDate());
 		events.put("Note", getNote());
+		events.put("TypeEvent", getTypeEvent());
 		return events;
 	}
 	
 	public int getLastId() throws IOException, ParseException {
+		int var = 0;
 		JSONArray liste_event = ReadWriteFileJson.readerFileJson("Events");
-		JSONObject lastEvent = (JSONObject) liste_event.get(liste_event.size()-1);
-		int var = Integer.parseInt(lastEvent.get("IdEvent").toString());
+		JSONObject lastEvent ;
+		if(liste_event!=null) {
+			System.out.println("hhhh");
+			lastEvent = (JSONObject) liste_event.get(liste_event.size()-1);
+			var = Integer.parseInt(lastEvent.get("IdEvent").toString());
+			return var;
+		}
+		System.out.println("Ici");
 		return var;
 	}
 	
@@ -81,6 +92,14 @@ public class Events {
 		this.date = date;
 	}
 
+	public String getTypeEvent() {
+		return typeEvent;
+	}
+
+	public void setTypeEvent(String typeEvent) {
+		this.typeEvent = typeEvent;
+	}
+	
 	public ArrayList<Plantes> getListePlante() {
 		return listePlante;
 	}

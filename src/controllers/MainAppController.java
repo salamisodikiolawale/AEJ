@@ -27,9 +27,7 @@ public class MainAppController implements Initializable{
     
 
     
-    @FXML void PageListeProjet() { }
-    @FXML void PageMeteo() { }
-    
+
     
     @FXML void PageListeSuivis() throws IOException {
     	fxml = FXMLLoader.load(getClass().getResource("/views/PageListeSuivis.fxml"));

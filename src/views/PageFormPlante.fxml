@@ -50,6 +50,7 @@
             <Label fx:id="labUrlImage" layoutX="504.0" layoutY="256.0" text="Aucune sélectionnée " />
             <Button fx:id="btnImporteImage" layoutX="488.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#importerImage" text="Sélectionner une image" />
             <Label fx:id="labConfirAddMesure" layoutX="530.0" layoutY="430.0" />
+            <Button fx:id="pagePlante" layoutX="550.0" layoutY="434.0" mnemonicParsing="false" onAction="#pagePlante" scaleShape="false" text="Page plante &gt;&gt;" visible="false" />
          </children>
       </AnchorPane>
    </children>

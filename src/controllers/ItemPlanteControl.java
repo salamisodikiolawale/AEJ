@@ -32,6 +32,13 @@ public class ItemPlanteControl implements Initializable{
 	 
 	 private Plantes plante;
 	 Parent fxml;
+	 /**
+	  * Permet d'afficher/Cacher le btn de 
+	  * retour sur le formulaire de modification
+	  * de la plante
+	  */
+	 @SuppressWarnings("unused")
+	 public static boolean activeBtn = false;
 	 
 	 //private ArrayList<String> urlList = new ArrayList<String>();
 	 
@@ -39,6 +46,8 @@ public class ItemPlanteControl implements Initializable{
 	 
 	 @SuppressWarnings("static-access")
 	@FXML void detailPlante() throws IOException, ParseException{
+		 //Affichage du btn
+		 activeBtn = true;
 		 try {
 		 Plantes pl = new Plantes();
 		 String id = pl.getId(lblNom.getText());

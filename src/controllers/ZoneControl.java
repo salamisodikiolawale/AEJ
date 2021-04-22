@@ -71,6 +71,7 @@ public class ZoneControl implements Initializable{
 	    	listezones.add(zone.tranformZoneToObjectJson());
 			ReadWriteFileJson.writeFileJson("Zones", listezones);
 			ReadWriteFileJson.showAlertWithHeaderText("Ajout Zone", "La zone a bien été crée");
+			Annuler();
     }
 
     @FXML
